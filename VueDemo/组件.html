@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <my-com1></my-com1>
+        <my-com2></my-com2>
+        <my-com3></my-com3>
+    </div>
+
+    <template id="tmp1">
+        <div>
+            <h1>template方法</h1>
+        </div>
+    </template>
+
+    <div id="app2">
+        <!-- <a href="" @chick.prevent="flag=true">登录</a>
+        <a href="" @chick.prevent="flag=false">注册</a>
+
+        <login v-if="flag"></login>
+        <register v-else="flag"></register> -->
+
+        <a href="" @chick.prevent="comName='login'">登录</a>
+        <a href="" @chick.prevent="comName='register'">注册</a>
+
+        <component :is="comName"></component>
+
+    </div>
+
+    <script>
+
+        var com1 = Vue.extend({
+            template:'<h3>用Vue.extend创建的组件</h3>'
+        })
+        Vue.component('myCom1',com1)
+
+        //组件中的data必须为一个方法，必须返回一个对象
+        Vue.component('myCom2',Vue.extend({
+            template:'<h3>用Vue.extend创建的组件2</h3>',
+            
+        }))
+
+        Vue.component('myCom3',{
+            template:'<h3>用Vue.extend创建的组件3 {{ msg }}</h3>',
+            data:function(){
+                return {
+                    msg:'data数据'
+                }
+            }
+        })
+
+        Vue.component('login',{
+            template:'<h3>登录组件</h3>',
+        })
+
+        Vue.component('register',{
+            template:'<h3>注册组件</h3>',
+        })
+
+        var vm = new Vue({
+            el:'#app2',
+            data:{
+                comName:''
+            },
+            methods:{
+
+            }
+        })
+    </script>
+
+</body>
+</html>

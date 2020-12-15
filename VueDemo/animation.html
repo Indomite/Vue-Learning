@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <link rel="stylesheet" href="./animate.min.css">
+
+    <style>
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+        .v-enter-active,
+        .v-leave-active{
+            transition: all 4s ease;
+        }
+
+        .my-enter,
+        .my-leave-to{
+            opacity: 0;
+            transform: translateY(100px);
+        }
+
+        .my-enter-active,
+        .my-leave-active{
+            transition: all 4s ease;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div id="app">
+        <input type="button" value="切换" @click="flag = !flag">
+        
+        <transition>
+            <p v-if="flag">123</p>
+        </transition>
+
+        <hr>
+
+        <input type="button" value="切换" @click="flag2 = !flag2">
+        <transition name="my">
+            <p v-if="flag2">456</p>
+        </transition>
+
+        <hr>
+
+        <input type="button" value="切换" @click="flag3 = !flag3">
+        <transition 
+        enter-active-class='animated bounceIn' 
+        leave-active-class="animated bounceOut" 
+        :duration="100">
+            <p v-if="flag3">456</p>
+        </transition>
+        
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                flag:false,
+                flag2:false,
+                flag3:false
+            },
+            methods:{
+
+            }
+        })
+    </script>
+
+</body>
+</html>
