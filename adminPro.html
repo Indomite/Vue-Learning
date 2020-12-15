@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <script src="./vue-resouce.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <label>name:
+            <input type="text" v-model="name">
+        </label>
+
+        <input type="button" value="添加" @click="add">
+
+        <label>搜索:
+            <input type="text" class="" v-model="keywords" v-focus v-color>
+        </label>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>Ctime</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in list" :key="item.id">
+                    <td>{{ item.id }}</td>
+                    <td >{{ item.name }}</td>
+                    <td>{{ item.ctime}}</td>
+                    <td>
+                        <a href="" @click.prevent="del(item.id)">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                name:'',
+                list:[
+                    { id:1, name:'奔驰', ctime:new Date() },
+                    { id:2, name:'宝马', ctime:new Date() }
+                ]
+            },
+            created(){
+                this.getAllList()
+            },
+            methods:{
+                getAllList(){
+                    this.$http.get('url').then(result => {
+                        var result = result.body
+                        if(result.status === 0){
+                            this.list = result.message
+                        }else{
+                            alert('获取数据失败')
+                        }
+                    })
+                },
+                add(){
+                    this.$http.post('url',{name:this.name},{emulateJSON:true})
+                    .then(result => {
+                        if(result.body.status === 0){
+                            this.getAllList()
+                            this.name = ''
+                        }else{
+                            alert('添加失败')
+                        }
+                    })
+                },
+                del(id){
+                    this.$http.get('url' + id).then(result =>{
+                        if(result.body.status === 0){
+                            this.getAllList()
+                        }else{
+                            alert('删除失败')
+                        }
+                    })
+                },
+            }
+        })
+    </script>
+
+</body>
+</html>

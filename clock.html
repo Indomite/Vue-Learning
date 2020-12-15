@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [c-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-cloak解决跳动问题   -->
+        <p v-cloak>{{ msg }}</p>    
+        <h1 v-text="msg"></h1>
+    </div>
+
+    <script src="./vue.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'HelloWorld'
+            }
+        })
+    </script>
+
+    <!-- 1.如何定义vue的代码结构 -->
+    <!-- 2.插入表达式和v-text -->
+    <!-- 3.v-cloak -->
+    <!-- 4.v-html -->
+    <!-- 5.c-bind 属性绑定 缩写 ： -->
+    <!-- 6.v-on 事件绑定 缩写 @-->
+</body>
+</html>

@@ -1,0 +1,33 @@
+.header {
+    width: 100%;
+    height: 40px;
+    background: #eee;
+    border-bottom: 1px solid #aaa;
+}
+
+.left_header {
+    float: left;
+    width: 40%;
+    /* background: #aaa; */
+}
+
+.left_mean>li {
+    float: left;
+    padding: 0 20px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.right_header {
+    float: left;
+    width: 60%;
+    height: 100%;
+    /* background: lightblue; */
+}
+
+.right_mean>li {
+    float: right;
+    padding: 0 20px;
+    line-height: 40px;
+    text-align: center;
+}

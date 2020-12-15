@@ -1,0 +1,92 @@
+.container {
+    width: 100%;
+}
+
+.nav_box {
+    width: 70%;
+    height: 60vh;
+    margin: 20px auto;
+    background-image: url('../images/index.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.banner {
+    width: 100%;
+    height: 30vh;
+    background: #eee;
+}
+
+.ban_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ban_list>li {
+    width: 400px;
+    margin: 20px 50px;
+    overflow: hidden;
+}
+
+.ban_list>li>span {
+    display: inline-block;
+    font-weight: bolder;
+}
+
+.article {
+    width: 100%;
+}
+
+.content {
+    width: 70%;
+    margin: 1rem auto;
+}
+
+.art {
+    margin: 20px;
+    padding: 10px;
+    width: 100%;
+    height: 300px;
+    background: #aaa;
+}
+
+.art_img {
+    position: relative;
+}
+
+.art_img>img {
+    position: absolute;
+    display: block;
+    width: 300px;
+    height: 300px;
+}
+
+.art_text {
+    position: relative;
+    margin-left: 320px;
+}
+
+.art_text>span {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin: 0 30px 0 0;
+}
+
+.art_text>span:nth-child(3) {
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.art_text>p {
+    text-transform: capitalize;
+    padding: 10px 0;
+}
+
+.linked {
+    position: absolute;
+    right: 0;
+    top: 260px;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    
+    <!-- 将被vue实例控制 -->
+    <div id="app">
+        <p>{{msg}}</p>
+    </div>
+
+    <script>
+        //创建vue实例
+        var vm =new Vue({
+            el:'#app',     //表示要控制的区域
+            data:{      //表示要用的数据
+                msg:'欢迎您'    //通过vue的指令操作dom
+
+            }
+        })
+    </script>
+
+</body>
+</html>

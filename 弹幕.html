@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="first" @click="start">
+        <input type="button" value="stop" @click="stop">
+        <p>{{ msg }}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'这是一条弹幕',
+                intervalId:null
+            },
+            methods:{
+                
+                start(){
+                    if(this.intervalId != null) return;
+                    this.intervalId = setInterval(()=>{
+                        var first = this.msg.substring(0,1)
+                        var list = this.msg.substring(1)
+                        this.msg = list+first
+                    },100)
+                },
+                stop(){
+                    clearInterval(this.intervalId)
+                    this.intervalId = null;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
